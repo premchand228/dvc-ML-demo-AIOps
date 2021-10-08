@@ -27,6 +27,7 @@ def split_and_save(config_path,params_path):
     test_data_file_path=os.path.join(artifacts_dir,split_data_dir,test_data_file_name)
     for data,data_path in (train,train_data_file_path),(test,test_data_file_path):
         save_local_df(data,data_path)
+        print("Stage 02 sucessfully run")
 
 
 

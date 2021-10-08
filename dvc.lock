@@ -34,8 +34,8 @@ stages:
       md5: 761f720c78d578494bedc850c50ddba3
       size: 112
     - path: src\stage_02_split_data.py
-      md5: 8e09f96815f91054862ee5ae1c53e705
-      size: 1808
+      md5: fc55c40525cf101473f50b683f2d7f8d
+      size: 1851
     outs:
     - path: artifacts\split_data_dir\test.csv
       md5: 3a3eef9f920deae72cb9bcd7b91231f1
