@@ -6,13 +6,18 @@ stages:
     - path: config\config.yaml
       md5: 1d4b7c58eab2726a09b8624ef43dbb0f
       size: 397
+    - path: rough\rough.py
+      md5: 66a78536805fb2cc7f36475868081c4a
+      size: 184
     - path: src\stage_01_load_save.py
-      md5: 68fd28431bf3c219300c3a9e40244945
-      size: 1577
+      md5: 98f3746aa1ca940c6d340a640abc192a
+      size: 1128
     - path: src\utils\all_utils.py
-      md5: e5673ddb8a523a5d4e36dc35108513b7
-      size: 722
+      md5: c2af46ee08a2a9c884ac09f6e087cccf
+      size: 720
     outs:
     - path: artifacts\raw_local_dir\data.csv
       md5: 7d814a1bda02145efe703f4e1c01847a
       size: 93599
+  always_run:
+    cmd: python rough\rough.py
