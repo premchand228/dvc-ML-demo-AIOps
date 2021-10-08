@@ -29,17 +29,17 @@ stages:
   load_data:
     cmd: python src/stage_01_load_save.py --config=config/config.yaml
     deps:
-    - path: config/config.yaml
-      md5: 542139a8e7bd16d2c581f1505ec4976b
+    - path: config\config.yaml
+      md5: 1d4b7c58eab2726a09b8624ef43dbb0f
       size: 397
-    - path: src/stage_01_load_save.py
-      md5: c1423a2b371f8d876bc6a2125a16da8c
-      size: 1062
-    - path: src/utils/all_utils.py
+    - path: src\stage_01_load_save.py
+      md5: 68fd28431bf3c219300c3a9e40244945
+      size: 1577
+    - path: src\utils\all_utils.py
       md5: 45ca3e6d3253e6b44ae4f40fcf13c9b4
       size: 720
     outs:
-    - path: artifacts/raw_local_dir/data.csv
+    - path: artifacts\raw_local_dir\data.csv
       md5: 7d814a1bda02145efe703f4e1c01847a
       size: 93599
   train:
