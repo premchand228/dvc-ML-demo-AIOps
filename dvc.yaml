@@ -31,3 +31,12 @@ stages:
       - src\stage_03_train.py
     outs:
       - artifacts\model_dir\ElasticNet.model  
+  evaluate:
+    cmd: python src\stage_04_evaluate.py --config=config/config.yaml --params=params.yaml
+    deps:
+      - artifacts\split_data_dir\test.csv
+      - config\config.yaml
+      - params.yaml
+      - src\stage_04_evaluate.py
+    outs:
+      -  artifacts\reports_dir\scores.json

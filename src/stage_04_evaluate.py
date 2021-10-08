@@ -24,36 +24,52 @@ def evaluate(config_path, params_path):
 
 
     test_data_path = os.path.join(artifacts_dir, split_data_dir, test_data_filename)
-    
-    test_data = pd.read_csv(test_data_path)
-
-    test_y = test_data["quality"]
-    test_x = test_data.drop("quality", axis=1)
-
-
-    model_dir = config["artifacts"]["model_dir"]
-    model_filename = config["artifacts"]["model_filename"]
-    model_path = os.path.join(artifacts_dir, model_dir, model_filename)
-    
-    lr = joblib.load(model_path)
-
-    predicted_values = lr.predict(test_x)
-    rmse, mae, r2 = evaluate_metrics(test_y, predicted_values)
-
-    scores_dir = config["artifacts"]["reports_dir"]
-    scores_filename = config["artifacts"]["scores"]
-
-    scores_dir_path = os.path.join(artifacts_dir, scores_dir)
-    create_directory([scores_dir_path])
-
-    scores_filepath = os.path.join(scores_dir_path, scores_filename)
-
+    #print(test_data_path)
+    test_data=pd.read_csv(test_data_path)
+    #print(test_data.head())
+    test_y=test_data["quality"]
+    test_x=test_data.drop("quality",axis=1)
+    model_dir=config["artifacts"]["model_dir"]
+    model_file_name=config["artifacts"]["model_filename"]
+    model_file_path=os.path.join(artifacts_dir, model_dir,model_file_name)
+    #print(model_file_path)
+    lr=joblib.load(model_file_path)
+    predicted_values=lr.predict(test_x)
+    rmse,mae,r2=evaluate_metrics(test_y,predicted_values)
+    scores_dir=config["artifacts"]["reports_dir"]
+    scores_file_name=config["artifacts"]["scores"]    
+    create_directory([os.path.join(artifacts_dir,scores_dir)])
+    scores_file_path=os.path.join(artifacts_dir,scores_dir,scores_file_name)
     scores = {
-        "rmse": rmse,
-        "mae": mae,
-        "r2": r2,
+       "rmse": rmse,
+       "mae": mae,
+       "r2": r2,
     }
-    save_reports(report=scores, report_path=scores_filepath)
+    save_reports(report=scores, report_path=scores_file_path)
+
+
+    #test_y = test_data["quality"]
+    #test_x = test_data.drop("quality", axis=1)
+
+
+    #model_dir = config["artifacts"]["model_dir"]
+    #model_filename = config["artifacts"]["model_filename"]
+    #model_path = os.path.join(artifacts_dir, model_dir, model_filename)
+    
+    #lr = joblib.load(model_path)
+
+    #predicted_values = lr.predict(test_x)
+    #rmse, mae, r2 = evaluate_metrics(test_y, predicted_values)
+
+    #scores_dir = config["artifacts"]["reports_dir"]
+    #scores_filename = config["artifacts"]["scores"]
+
+    #scores_dir_path = os.path.join(artifacts_dir, scores_dir)
+    #create_directory([scores_dir_path])
+
+    #scores_filepath = os.path.join(scores_dir_path, scores_filename)
+
+    
 
 
 if __name__ == '__main__':
@@ -65,5 +81,3 @@ if __name__ == '__main__':
     parsed_args = args.parse_args()
 
     evaluate(config_path=parsed_args.config, params_path=parsed_args.params)
-
-
