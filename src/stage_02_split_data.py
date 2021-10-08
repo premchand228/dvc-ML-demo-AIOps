@@ -12,7 +12,7 @@ def split_and_save(config_path,params_path):
     raw_local_file=config["artifacts"]["raw_local_file"]
     raw_local_file_path=os.path.join(artifacts_dir,raw_local_dir,raw_local_file)
     print(raw_local_file_path)
-    df=pd.read_csv(raw_local_file_path)
+    df=pd.read_csv(raw_local_file_path )
     print(df.head(3))
     split_ratio=params["base"]["test_size"]
     random_state=params["base"]["random_state"]

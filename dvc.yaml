@@ -22,3 +22,12 @@ stages:
     outs:
       - artifacts\split_data_dir\test.csv
       - artifacts\split_data_dir\train.csv
+  train_data:
+    cmd: python src\stage_03_train.py --config=config/config.yaml --params=params.yaml
+    deps:
+      - artifacts\split_data_dir\train.csv
+      - config\config.yaml
+      - params.yaml
+      - src\stage_03_train.py
+    outs:
+      - artifacts\model_dir\ElasticNet.model  
